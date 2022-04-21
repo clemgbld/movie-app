@@ -15,6 +15,11 @@ export const moviesSlice = createSlice({
       })
       .addCase(fetchMovies.pending, (state, action) => {
         state.status = "loading";
+      })
+      .addCase(fetchMovies.rejected, (state, action) => {
+        state.status = "rejected";
+
+        state.error = action.error.message;
       });
   },
 });

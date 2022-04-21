@@ -32,6 +32,20 @@ const server = setupServer(
   })
 );
 
+const serverOveride = (statusCode, message) => {
+  server.use(
+    rest.get("https://api.themoviedb.org/3/discover/movie", (req, res, ctx) => {
+      return res(
+        ctx.status(statusCode),
+        ctx.json({
+          status_code: statusCode,
+          status_message: message,
+        })
+      );
+    })
+  );
+};
+
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
@@ -81,5 +95,35 @@ describe("display movies features", () => {
     const store = createStore();
     store.dispatch(fetchMovies());
     expect(store.getState()).toEqual({ movies: { status: "loading" } });
+  });
+
+  it("should handle 401 error", async () => {
+    serverOveride(401, "401 Unauthorized Error");
+
+    const store = createStore();
+
+    await store.dispatch(fetchMovies());
+
+    expect(store.getState()).toEqual({
+      movies: {
+        status: "rejected",
+        error: "401 Unauthorized Error",
+      },
+    });
+  });
+
+  it("should handle 404 error", async () => {
+    serverOveride(404, "404 not found");
+
+    const store = createStore();
+
+    await store.dispatch(fetchMovies());
+
+    expect(store.getState()).toEqual({
+      movies: {
+        status: "rejected",
+        error: "404 not found",
+      },
+    });
   });
 });

@@ -1,5 +1,7 @@
 import { KEY } from "./TMD-API";
 import baseUrl from "./TMD-API";
+import { response } from "msw";
+import { isRejectedWithValue } from "@reduxjs/toolkit";
 
 class tmdService {
   constructor() {
@@ -9,11 +11,9 @@ class tmdService {
   }
 
   async _fetch(endpoint, params) {
-    try {
-      const res = await this._baseUrl.get(endpoint, params);
+    const res = await this._baseUrl.get(endpoint, params);
 
-      return res;
-    } catch (err) {}
+    return res;
   }
 
   async getMovies() {

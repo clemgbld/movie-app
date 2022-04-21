@@ -1,8 +1,18 @@
 import tmdService from "../../../../services/api/tmdService";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, isRejected } from "@reduxjs/toolkit";
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
-  const res = await tmdService.getMovies();
+  try {
+    const res = await tmdService.getMovies();
 
-  return res.data;
+    return res.data;
+  } catch (err) {
+    console.log(err.response.data.status_message);
+    const customError = {
+      name: "custom axios error",
+      message: err.response.data.status_message,
+    };
+
+    throw customError;
+  }
 });
