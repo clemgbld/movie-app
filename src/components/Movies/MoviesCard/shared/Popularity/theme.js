@@ -1,14 +1,14 @@
 export const theme = {
   bad: {
-    trailColor: "#f03e3e",
-    color: "#ffa8a8",
+    trailColor: "#ffa8a8",
+    color: "#f03e3e",
   },
   good: {
-    trailColor: "#f59f00",
-    color: "#ffec99",
+    trailColor: "#ffec99",
+    color: "#f59f00",
   },
   great: {
-    trailColor: "#0ca678",
-    color: "#96f2d7",
+    trailColor: "#96f2d7",
+    color: "#20c997",
   },
 };

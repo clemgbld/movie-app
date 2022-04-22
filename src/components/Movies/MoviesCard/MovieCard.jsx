@@ -1,7 +1,5 @@
 import React from "react";
 import classes from "./MovieCard.module.scss";
-import { Progress } from "react-sweet-progress";
-import "react-sweet-progress/lib/style.css";
 import Popularity from "./shared/Popularity/Popularity";
 
 const MovieCard = ({ data }) => {

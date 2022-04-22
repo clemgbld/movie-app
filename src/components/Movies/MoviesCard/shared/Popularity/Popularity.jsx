@@ -3,6 +3,7 @@ import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 import classes from "./Popularity.module.scss";
 import { theme } from "./theme";
+import { handleStatus } from "../../../../../core/features/popularity/handleStatus";
 
 const Popularity = ({ popularity }) => {
   return (
@@ -13,6 +14,7 @@ const Popularity = ({ popularity }) => {
         strokeWidth={6}
         percent={popularity}
         symbolClassName={classes.progress}
+        status={handleStatus(popularity)}
         theme={theme}
         style={{
           background: "#000",
