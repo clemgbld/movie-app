@@ -1,0 +1,35 @@
+@import "../../../utils.scss";
+
+.card {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__img {
+    object-fit: cover;
+    border-radius: 8px;
+    width: 21rem;
+    margin-bottom: 3.6rem;
+    @include shadow;
+  }
+
+  &__caption {
+    padding-left: 1rem;
+  }
+
+  &__title {
+    max-width: 20rem;
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  &__date {
+    color: #ddd;
+  }
+}

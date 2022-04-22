@@ -7,7 +7,7 @@
   height: 8rem;
   background-color: #333;
   padding: 1.6rem;
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+  @include shadow;
 
   &__title {
     font-size: 3.6rem;

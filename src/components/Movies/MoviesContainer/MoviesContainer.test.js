@@ -36,10 +36,30 @@ describe("MoviesContainer", () => {
   it("should display a 401 error to the screen", async () => {
     serverOveride(401, "401 Unauthorized Error");
 
+    setup();
+
     const error = await waitFor(() =>
-      screen.findByText(/"401 Unauthorized Error"/i)
+      screen.findByText("401 Unauthorized Error")
     );
 
     expect(error).toBeInTheDocument();
+  });
+
+  it("should display a 404 error to the screen", async () => {
+    serverOveride(404, "404 not found Error");
+
+    setup();
+
+    const error = await waitFor(() => screen.findByText("404 not found Error"));
+
+    expect(error).toBeInTheDocument();
+  });
+
+  it("should render the movies sucessfully", async () => {
+    setup();
+
+    const cards = await waitFor(() => screen.findAllByRole("contentinfo"));
+
+    expect(cards.length).toBe(1);
   });
 });

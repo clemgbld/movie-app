@@ -1,5 +1,6 @@
 import Layout from "./components/Layout/Layout";
 import MoviesContainer from "./components/Movies/MoviesContainer/MoviesContainer";
+import { memo } from "react";
 
 function App() {
   return (
@@ -9,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);
