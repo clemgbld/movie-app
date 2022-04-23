@@ -9,7 +9,7 @@ In the Core which is the brain of my application i used Redux tool kit to reduce
 ## Services/ Infrastructure
 
 I made a class that manage all the api calls and also some data formating.
-Indeed this class communicate with core of the application provides it the data when it needs it.
+Indeed this class communicate with the core of the application and provides it the data when it needs it.
 
 ## FrameWork / Library /UI
 
@@ -17,13 +17,13 @@ I used the last version (18) React js to build the Ui of the application each co
 
 ### Architecture of a component
 
-a component is usually pout in a folder name after it and has 3 files Component.test.js (for testing),Component.jsx(the component itself), Component.module.scss(for styling).
+a component is usually put in a folder name after it and has 3 files Component.test.js (for testing),Component.jsx(the component itself), Component.module.scss(for styling).
 
 ## Conclusion
 
 Why i setup this architecture ?
 
-Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible actually because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case react) wich is really handy in case of a futur migration. that also facilitate the testatbility of our product owing to the fact that all the layers know nothing about each other.
+Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible actually because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case React) wich is really handy in case of a futur migration . that also facilitate the testatbility of our product owing to the fact that all the layers know nothing about each other.
 
 # Workflow
 
