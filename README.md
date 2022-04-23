@@ -2,7 +2,34 @@
 
 ![](public/img/Architecture.PNG)
 
+## Core / Domain
+
+In the Core which is the brain of my application i used Redux tool kit to reduce the boiler plate code that is present in the core Redux library, and ES6 vanilla javascript. the different actions and selectors enable us to comunicate with UI thanks to the React-redux provider that wraps our App component.
+
+## Services/ Infrastructure
+
+I made a class that manage all the api calls and also some data formating.
+Indeed this class communicate with core of the application provides it the data when it needs it.
+
+## FrameWork / Library /UI
+
+I used React js to build the Ui of the application each component are either pure component that displays data received by props or component that display data received by useSelectors and/or dispacth actions received by useDispatch
+
+### Architecture of a component
+
+a component is usually pout in a folder name after it and has 3 files Component.test.js (for testing),Component.jsx(the component itself), Component.module.scss(for styling).
+
+## Conclusion
+
+Why i setup this architecture ?
+
+Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible actually because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case react) wich is really handy in case of a futur migration. that also facilitate the testatbility of our product.
+
 # Getting Started with Create React App
+
+# Workflow
+
+![](public/img/Workflow.PNG)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
