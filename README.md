@@ -13,7 +13,7 @@ Indeed this class communicate with core of the application provides it the data 
 
 ## FrameWork / Library /UI
 
-I used React js to build the Ui of the application each component are either pure component that displays data received by props or component that display data received by useSelectors and/or dispacth actions received by useDispatch
+I used the last version (18) React js to build the Ui of the application each component are either pure component that displays data received by props or component that display data received by useSelectors and/or dispacth actions received by useDispatch
 
 ### Architecture of a component
 
@@ -23,13 +23,41 @@ a component is usually pout in a folder name after it and has 3 files Component.
 
 Why i setup this architecture ?
 
-Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible actually because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case react) wich is really handy in case of a futur migration. that also facilitate the testatbility of our product.
-
-# Getting Started with Create React App
+Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible actually because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case react) wich is really handy in case of a futur migration. that also facilitate the testatbility of our product owing to the fact that all the layers know nothing about each other.
 
 # Workflow
 
+## TDD (Test Driven Development)
+
 ![](public/img/Workflow.PNG)
+
+## Library used
+
+To help me write my test i used plain old jest in the core of my application and react testing library to help me replicate the rendering of my component in the virtual DOM and his behavior, i also used jest to write my assertions.
+
+i choose react-testing-library for my react component because it enable us to test our application the way the user experience it and not the actual implementation.
+
+### Mocking
+
+To mock my API calls i used Mock Service Worker(MSW) because like react-testing-library my test are not glued by the implementation(axios,fetch ect...) since msw mock by intercepting requests on the network level. i used axios for my api calls but i can replaced it with fetch and it will not break my test, that is the biggest advantage of msw.
+
+## Why use TDD in frontend development
+
+Traditionally TDD is not often used in frontend development so why i used tdd in this project ?
+
+1. "TDD slow down the development process", it's true in a short term point of view. Nonetheless in a mid and long term the development process is faster with tdd for the reason that i'm becoming faster as i practice it, when i write pure logic i don't need or rarely need to go back and forth between my browser and my IDE and use console.log or the debugger because the tests help me catch bugs, and point me in the right direction like a GPS.
+
+2. I don't need to test manually my application all the time.
+
+3. My code is much more shorter and elegant thanks to the continious refactoring.
+
+4. I trust more my code, i'm not afraid to break something when i add a new feature to my project or when i refactor a function that already exists.
+
+5. TDD helps me in the design of my application, in reality the tests are just a side effects of TDD, the real value is in the guidance of writing my intention before wrinting any production code and the countinuous feedback.
+
+I surely forgot to mention some advantages of this workflow and there are surely other advantages that i'm not even aware of.
+
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
