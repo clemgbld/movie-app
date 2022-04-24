@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import MoviesContainer from "./MoviesContainer";
 import { Provider } from "react-redux";
 import { createStore } from "../../../core/store";
-import { server, serverOveride } from "../../../test-utils/displayMovies";
+import { server, serverOveride } from "../../../mocks/displayMovies";
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

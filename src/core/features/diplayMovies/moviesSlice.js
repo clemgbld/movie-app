@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchMovies } from "./actions/fetchMovies";
 
-const initialState = { status: "idle" };
+const initialState = { status: "idle", data: {} };
 
 export const moviesSlice = createSlice({
   name: "movies",
@@ -13,7 +13,7 @@ export const moviesSlice = createSlice({
         state.data = data;
         state.status = "idle";
       })
-      .addCase(fetchMovies.pending, (state, action) => {
+      .addCase(fetchMovies.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchMovies.rejected, (state, action) => {

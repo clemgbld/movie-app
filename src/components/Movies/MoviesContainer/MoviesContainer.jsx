@@ -17,8 +17,6 @@ const MoviesContainer = () => {
   const error = useSelector(selectError);
   const movies = useSelector(selectMovies);
 
-  console.log(movies);
-
   useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);

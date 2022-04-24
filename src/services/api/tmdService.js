@@ -18,11 +18,15 @@ class tmdService {
   }
 
   setBaseImgPathPoster(endPoint) {
-    return `${this._image_path}${this._poster_size}${endPoint}`;
+    return endPoint
+      ? `${this._image_path}${this._poster_size}${endPoint}`
+      : "/img/no-image.PNG";
   }
 
   setBaseImgPathBackdrop(endPoint) {
-    return `${this._image_path}${this._backdrop_size}${endPoint}`;
+    return endPoint
+      ? `${this._image_path}${this._backdrop_size}${endPoint}`
+      : "/img/no-backdrop.jpg";
   }
 
   setPopularityInPercent(voteAverage) {
@@ -41,6 +45,15 @@ class tmdService {
     };
 
     return this._fetch("/discover/movie", params);
+  }
+
+  async getDetails(id) {
+    const params = {
+      language: this._language,
+      api_key: this._key,
+    };
+
+    return this._fetch(`/movie/${id}`, params);
   }
 }
 

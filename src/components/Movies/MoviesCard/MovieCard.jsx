@@ -7,7 +7,12 @@ const MovieCard = ({ data }) => {
   return (
     <figure className={classes.card} role="contentinfo">
       <div className={classes.card__content}>
-        <img className={classes.card__img} src={img} alt={title} />
+        <img
+          loading="lazy"
+          className={classes.card__img}
+          src={img}
+          alt={title}
+        />
         <Popularity popularity={popularity} />
       </div>
       <figcaption className={classes.card__caption}>
