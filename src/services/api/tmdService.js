@@ -1,5 +1,4 @@
-import { KEY } from "./TMD-API";
-import baseUrl from "./TMD-API";
+import baseUrl, { KEY } from "./TMD-API";
 
 class tmdService {
   constructor() {

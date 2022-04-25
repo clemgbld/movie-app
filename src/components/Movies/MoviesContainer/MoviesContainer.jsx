@@ -10,6 +10,7 @@ import {
   selectMovies,
 } from "../../../core/features/diplayMovies/selectors";
 import MovieCard from "../MoviesCard/MovieCard";
+import classNames from "clsx";
 
 const MoviesContainer = () => {
   const dispatch = useDispatch();
@@ -23,9 +24,10 @@ const MoviesContainer = () => {
 
   const isLoading = status === "loading";
 
-  const containerClass = `${
-    error || isLoading ? classes.container : classes.grid
-  }`;
+  const containerClass = classNames({
+    [classes.container]: error || isLoading,
+    [classes.grid]: !(error || isLoading),
+  });
 
   const renderMovie = (movie) => {
     const { id, poster_path, title, release_date, vote_average } = movie;
@@ -46,7 +48,7 @@ const MoviesContainer = () => {
       <div className={containerClass}>
         {isLoading && <Spinner />}
         {error && <p>{error}</p>}
-        {movies && movies.map((movie) => renderMovie(movie))}
+        {movies && movies.map(renderMovie)}
       </div>
     </div>
   );

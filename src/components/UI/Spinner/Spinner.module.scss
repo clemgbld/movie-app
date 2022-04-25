@@ -3,16 +3,18 @@
 .lds-circle {
   display: inline-block;
   transform: translateZ(1px);
+
+  &--innner {
+    display: inline-block;
+    width: 6.4rem;
+    height: 6.4rem;
+    margin: 0.8rem;
+    border-radius: 50%;
+    background: $primaryColor;
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
 }
-.lds-circle > div {
-  display: inline-block;
-  width: 6.4rem;
-  height: 6.4rem;
-  margin: 0.8rem;
-  border-radius: 50%;
-  background: $primaryColor;
-  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-}
+
 @keyframes lds-circle {
   0%,
   100% {
