@@ -18,6 +18,8 @@ export const fetchDetails = createAsyncThunk(
           res.data.backdrop_path
         ),
         vote_average: tmdService.setPopularityInPercent(res.data.vote_average),
+        runtime: tmdService.formatRunTime(res.data.runtime),
+        year: res.data.release_date.slice(0, 4),
       };
 
       return dataFormated;

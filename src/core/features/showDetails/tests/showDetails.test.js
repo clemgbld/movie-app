@@ -124,7 +124,7 @@ describe("show the details(synopsis, background ect...) of the selected movie", 
         ],
         release_date: "1999-10-12",
         revenue: 100853753,
-        runtime: 139,
+        runtime: "2h19",
         spoken_languages: [
           {
             iso_639_1: "en",
@@ -138,6 +138,7 @@ describe("show the details(synopsis, background ect...) of the selected movie", 
         video: false,
         vote_average: 78,
         vote_count: 3439,
+        year: "1999",
       });
     });
 
@@ -221,8 +222,9 @@ describe("show the details(synopsis, background ect...) of the selected movie", 
           },
         ],
         release_date: "1999-10-12",
+
         revenue: 100853753,
-        runtime: 139,
+        runtime: null,
         spoken_languages: [
           {
             iso_639_1: "en",
@@ -236,6 +238,7 @@ describe("show the details(synopsis, background ect...) of the selected movie", 
         video: false,
         vote_average: 78,
         vote_count: 3439,
+        year: "1999",
       });
     });
 
@@ -243,7 +246,7 @@ describe("show the details(synopsis, background ect...) of the selected movie", 
       const { retrieveMovieDetails, selectStatusDetails } =
         retrieveMovieDetailsSUT().build();
 
-      retrieveMovieDetails();
+      retrieveMovieDetails(fakeMovieId);
 
       expect(selectStatusDetails()).toBe("loading");
     });
