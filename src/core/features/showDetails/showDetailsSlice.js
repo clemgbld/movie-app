@@ -22,8 +22,8 @@ export const showDetailsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchDetails.fulfilled, (state, action) => {
-        state.data = { ...action.payload };
         state.status = "idle";
+        state.data = { ...action.payload };
       })
       .addCase(fetchDetails.pending, (state) => {
         state.status = "loading";

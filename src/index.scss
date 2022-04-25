@@ -13,11 +13,11 @@ html {
   overflow-x: hidden;
   background-color: #222;
 
-  @include responsive($tablet) {
+  @include breakpoint-tablet {
     font-size: 56.25%;
   }
 
-  @include responsive($laptop) {
+  @include breakpoint-laptop {
     font-size: 62.25%;
   }
 }

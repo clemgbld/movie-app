@@ -7,16 +7,12 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
 
     const dataFormated = {
       ...res.data,
-      results: [...res.data.results].map((result) => {
-        return {
-          ...result,
-          poster_path: tmdService.setBaseImgPathPoster(result.poster_path),
-          backdrop_path: tmdService.setBaseImgPathBackdrop(
-            result.backdrop_path
-          ),
-          vote_average: tmdService.setPopularityInPercent(result.vote_average),
-        };
-      }),
+      results: [...res.data.results].map((result) => ({
+        ...result,
+        poster_path: tmdService.setBaseImgPathPoster(result.poster_path),
+        backdrop_path: tmdService.setBaseImgPathBackdrop(result.backdrop_path),
+        vote_average: tmdService.setPopularityInPercent(result.vote_average),
+      })),
     };
 
     return dataFormated;

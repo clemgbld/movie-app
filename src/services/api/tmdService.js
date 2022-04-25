@@ -1,5 +1,5 @@
-import { KEY } from "./TMD-API";
-import baseUrl from "./TMD-API";
+import baseUrl, { KEY } from "./TMD-API";
+import numeral from "numeral";
 
 class tmdService {
   constructor() {
@@ -27,6 +27,12 @@ class tmdService {
     return endPoint
       ? `${this._image_path}${this._backdrop_size}${endPoint}`
       : "/img/no-backdrop.jpg";
+  }
+
+  formatRunTime(minutes) {
+    return minutes
+      ? numeral(minutes).format("00:00").slice(3).replace(":", "h")
+      : null;
   }
 
   setPopularityInPercent(voteAverage) {

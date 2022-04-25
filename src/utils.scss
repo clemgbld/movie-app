@@ -6,8 +6,15 @@ $laptop: 75em;
 $tablet: 59em;
 
 // mixins
-@mixin responsive($breakpoint) {
-  @media (min-width: $breakpoint) {
+
+@mixin breakpoint-tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin breakpoint-laptop {
+  @media (min-width: $laptop) {
     @content;
   }
 }
@@ -24,6 +31,8 @@ $tablet: 59em;
   gap: $gap;
 }
 
-@mixin shadow(){
+$shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+
+@mixin shadow() {
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
 }

@@ -14,7 +14,7 @@
     border-radius: 8px;
     width: 21rem;
     margin-bottom: 3.6rem;
-    @include shadow;
+    box-shadow: $shadow;
   }
 
   &__caption {
