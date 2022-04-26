@@ -10,6 +10,10 @@
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 99;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &__container {
     position: relative;
 
@@ -31,6 +35,10 @@
       height: 70%;
       gap: 1.6rem;
       align-items: center;
+    }
+
+    &:hover {
+      cursor: default;
     }
   }
 
