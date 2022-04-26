@@ -1,16 +1,19 @@
 @import "../../../utils.scss";
 
 .card {
-  &:hover {
-    cursor: pointer;
-  }
-
   &__content {
     position: relative;
   }
 
   &__img {
     @include card(21rem);
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
   }
 
   &__caption {
