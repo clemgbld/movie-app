@@ -55,8 +55,7 @@ class tmdService {
 
   async getDetails(id) {
     const params = {
-      language: this._language,
-      api_key: this._key,
+      params: { language: this._language, api_key: this._key },
     };
 
     return this._fetch(`/movie/${id}`, params);

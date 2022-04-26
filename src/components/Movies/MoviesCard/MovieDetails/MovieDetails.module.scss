@@ -1,0 +1,115 @@
+@import "../../../../utils.scss";
+
+.modal {
+  @include flex--full-center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 99;
+
+  &__container {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 90%;
+    height: 90%;
+
+    background-color: rgba(0, 0, 0, 0.9);
+
+    padding: 1.6rem;
+
+    border-radius: 10px;
+
+    @include breakpoint-tablet {
+      flex-direction: row;
+      height: 70%;
+      gap: 1.6rem;
+      align-items: center;
+    }
+  }
+
+  &__close {
+    @include flex--full-center;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+
+    background-color: rgba(34, 34, 34, 0.85);
+
+    border: none;
+    border-radius: 2px;
+
+    color: #fff;
+
+    font-size: 3rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__poster {
+    position: relative;
+  }
+
+  &__img {
+    @include card(23rem);
+    @include breakpoint-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__content {
+    padding: 1.6rem;
+
+    background-color: rgba(34, 34, 34, 0.85);
+
+    border-radius: 8px;
+
+    @include breakpoint-tablet {
+      height: 34.3rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &__id {
+    border: solid 1px #fff;
+    padding: 0.3rem;
+  }
+
+  &__title {
+    margin-bottom: 1.6rem;
+  }
+
+  &__list {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  &__tagline {
+    margin-bottom: 1rem;
+    color: #ddd;
+  }
+
+  &__synopsis {
+    margin-bottom: 1rem;
+  }
+
+  &__overview {
+    line-height: 1.2;
+  }
+}

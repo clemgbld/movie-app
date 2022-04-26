@@ -7,28 +7,6 @@ import { retrieveMovieDetailsSUT } from "./sut-builder";
 import { fakeMovieId } from "../../../../mocks/fixtures/fakeMovieId";
 
 describe("show the details(synopsis, background ect...) of the selected movie", () => {
-  describe("show and hideDetails", () => {
-    it("should be close initially", () => {
-      const { selectDetailsIsOpen } = retrieveMovieDetailsSUT().build();
-      expect(selectDetailsIsOpen()).toBeFalsy();
-    });
-
-    it("should show the details of the selected movie", () => {
-      const { selectDetailsIsOpen, showMovieDetails } =
-        retrieveMovieDetailsSUT().build();
-      showMovieDetails();
-      expect(selectDetailsIsOpen()).toBeTruthy();
-    });
-
-    it("should close the details of the selected movie when it is open", () => {
-      const { selectDetailsIsOpen, showMovieDetails, hideMovieDetails } =
-        retrieveMovieDetailsSUT().build();
-      showMovieDetails();
-      hideMovieDetails();
-      expect(selectDetailsIsOpen()).toBeFalsy();
-    });
-  });
-
   describe("get the details of a movie", () => {
     beforeAll(() => server.listen());
     afterEach(() => server.resetHandlers());

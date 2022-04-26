@@ -37,6 +37,7 @@ const MoviesContainer = () => {
       title,
       date: release_date,
       popularity: vote_average,
+      id,
     };
 
     return <MovieCard key={id} data={data} />;

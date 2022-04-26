@@ -298,7 +298,7 @@ export const serverOverideWithMultipleGenres = () => {
             ],
             release_date: "1999-10-12",
             revenue: 100853753,
-            runtime: "1h39",
+            runtime: 139,
             spoken_languages: [
               {
                 iso_639_1: "en",

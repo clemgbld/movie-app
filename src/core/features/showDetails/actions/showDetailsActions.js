@@ -1,9 +1,5 @@
-import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import tmdService from "../../../../services/api/tmdService";
-
-export const showDetails = createAction("movieDetails/showDetails");
-
-export const hideDetails = createAction("movieDetails/hideDetails");
 
 export const fetchDetails = createAsyncThunk(
   "movieDetails/fetchDetails",

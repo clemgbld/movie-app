@@ -1,7 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-export const selectIsOpen = (state) => state.movieDetails.isOpen;
-
 export const selectStatus = (state) => state.movieDetails.status;
 
 export const selectError = (state) => state.movieDetails.error;

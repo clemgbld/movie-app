@@ -10,11 +10,7 @@
   }
 
   &__img {
-    object-fit: cover;
-    border-radius: 8px;
-    width: 21rem;
-    margin-bottom: 3.6rem;
-    box-shadow: $shadow;
+    @include card(21rem);
   }
 
   &__caption {
