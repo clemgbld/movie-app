@@ -31,8 +31,12 @@ $tablet: 59em;
   gap: $gap;
 }
 
-$shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
-
-@mixin shadow() {
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+@mixin card($width) {
+  object-fit: cover;
+  border-radius: 8px;
+  width: $width;
+  margin-bottom: 3.6rem;
+  box-shadow: $shadow;
 }
+
+$shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);

@@ -4,16 +4,18 @@ import {
   server,
   serverOveride,
   serverOverideWithMultipleGenres,
+  serverOverideWithNoImages,
 } from "../../../../mocks/showDetails";
 import { createStore } from "../../../../core/store";
 import { Provider } from "react-redux";
 import { fakeMovieId } from "../../../../mocks/fixtures/fakeMovieId";
 
-describe("MoVieDetails", () => {
+describe("MovieDetails", () => {
   const setup = () => {
+    const closeModal = jest.fn();
     render(
       <Provider store={createStore()}>
-        <MovieDetails id={fakeMovieId} />
+        <MovieDetails id={fakeMovieId} closeModal={closeModal} />
       </Provider>
     );
   };
@@ -121,5 +123,53 @@ describe("MoVieDetails", () => {
     const genre2 = await waitFor(() => screen.findByText("Action"));
     expect(genre1).toBeInTheDocument();
     expect(genre2).toBeInTheDocument();
+  });
+
+  it("should display the duration of the movie", async () => {
+    setup();
+    const duration = await waitFor(() => screen.findByText("2h19"));
+    expect(duration).toBeInTheDocument();
+  });
+
+  it("shouldn't display any duration the movie doesn't have a duration", async () => {
+    serverOverideWithNoImages();
+    setup();
+    const duration = await waitFor(() => screen.queryByText("2h19"));
+    expect(duration).not.toBeInTheDocument();
+  });
+
+  it("should display the percentage of popularity of the movie", async () => {
+    setup();
+    const popularity = await waitFor(() => screen.findByTestId("popularity"));
+
+    expect(popularity).toBeInTheDocument();
+  });
+
+  it("should display a tagline", async () => {
+    setup();
+    const tagline = await waitFor(() =>
+      screen.findByText(
+        "How much can you know about yourself if you've never been in a fight?"
+      )
+    );
+    expect(tagline).toBeInTheDocument();
+  });
+
+  it("should display an overview of the movie", async () => {
+    setup();
+    const overview = await waitFor(() =>
+      screen.findByText(
+        'A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground "fight clubs" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.'
+      )
+    );
+
+    expect(overview).toBeInTheDocument();
+  });
+
+  it("should render a button to close the modal", async () => {
+    setup();
+    const close = await waitFor(() => screen.findByRole("button"));
+
+    expect(close).toBeInTheDocument();
   });
 });

@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchDetails } from "./actions/showDetailsActions";
 
 const initialState = {
-  isOpen: false,
   status: "idle",
   data: {},
 };
