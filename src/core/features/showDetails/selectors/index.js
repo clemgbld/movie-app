@@ -13,3 +13,5 @@ export const selectGenresNames = createSelector(
 
   (genres) => genres?.map((genre) => genre.name)
 );
+
+export const selectDetailsCached = (state) => state.movieDetails.cache;

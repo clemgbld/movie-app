@@ -1,11 +1,12 @@
 import { createStore } from "../../../store";
-import {
-  hideDetails,
-  showDetails,
-  fetchDetails,
-} from "../actions/showDetailsActions";
+import { fetchDetails } from "../actions/showDetailsActions";
 
-import { selectStatus, selectError, selectMovieDetails } from "../selectors";
+import {
+  selectStatus,
+  selectError,
+  selectMovieDetails,
+  selectDetailsCached,
+} from "../selectors";
 
 export const retrieveMovieDetailsSUT = () => {
   return {
@@ -16,9 +17,12 @@ export const retrieveMovieDetailsSUT = () => {
       const retrieveMovieDetails = async (movieId) =>
         await store.dispatch(fetchDetails(movieId));
 
+      const selectCache = () => selectDetailsCached(store.getState());
+
       const selectErrorMessage = () => selectError(store.getState());
 
       return {
+        selectCache,
         selectErrorMessage,
         selectDetails,
         selectStatusDetails,

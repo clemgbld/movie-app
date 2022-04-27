@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import tmdService from "../../../../services/api/tmdService";
+import { selectDetailsCached } from "../selectors";
 
 export const fetchDetails = createAsyncThunk(
   "movieDetails/fetchDetails",
@@ -27,5 +28,12 @@ export const fetchDetails = createAsyncThunk(
 
       throw customError;
     }
+  },
+  {
+    condition: (movieId, { getState }) => {
+      const cache = selectDetailsCached(getState());
+
+      if (cache[movieId]) return cache[movieId];
+    },
   }
 );

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchDetails } from "./actions/showDetailsActions";
 
 const initialState = {
+  cache: {},
   status: "idle",
   data: {},
 };
@@ -9,22 +10,20 @@ const initialState = {
 export const showDetailsSlice = createSlice({
   name: "movieDetails",
   initialState,
-  reducers: {
-    showDetails(state) {
-      state.isOpen = true;
-    },
-    hideDetails(state) {
-      state.isOpen = false;
-    },
-  },
-
   extraReducers: (builder) => {
     builder
       .addCase(fetchDetails.fulfilled, (state, action) => {
         state.status = "idle";
         state.data = { ...action.payload };
+
+        if (!state.cache[action.payload.id]) {
+          state.cache = {
+            ...state.cache,
+            [action.payload.id]: action.payload,
+          };
+        }
       })
-      .addCase(fetchDetails.pending, (state) => {
+      .addCase(fetchDetails.pending, (state, action) => {
         state.status = "loading";
       })
       .addCase(fetchDetails.rejected, (state, action) => {
