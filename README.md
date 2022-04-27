@@ -25,6 +25,42 @@ Why i setup this architecture ?
 
 Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible actually because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case React) wich is really handy in case of a futur migration . that also facilitate the testatbility of our product owing to the fact that all the layers know nothing about each other.
 
+# Alternative Language choice
+
+I could have use Typescript instead of Javascript, it is the modern way to go with React, i would have use it if the project was bigger.
+
+## Avantages
+
+Direct feedback from the editor so before the compilation. For exemple if i miss a parametter in a function Typescript will catch the error directly, Javascript doesn't see this type of error. Typescript enable us to have better code completion support thanks to the interfaces and types. The last avantage is the self documentation that Typescript gives to the code base, in fact Typescript with TDD alltogether further improve the quality of the code.
+
+## Drawbacks
+
+there is only few trades-off with typescript the first one is that you write more code than with vanilla Javascript. The second one is that certain library that are not maintained anymore doesn't enable us to have type support for Typescript but this case is becoming less frequent.
+
+# Alternative Architecture 1
+
+Instead of using Redux i could have use a custom hook for each reducer with the react hook useReducer.
+
+## Avantages
+
+The main advantage is that useReducer is already include in React so i wouldn't have installed redux-toolkit and react-redux, and the less you download packages the better it is for performance. I would have written a little bit less code though Redux-toolkit solved the boilerplate problem of the classic redux. Custom hooks with useReducer are also easy to test thanks to react-hooks-testing-library.
+
+## Drawbacks
+
+There are two main drawbacks first a strong coupling with React so less fexibilty, secondly useReducer = localState if i wanted to share state between multiple components i would be forced to use the Context APi from React wich is a great option but it's not really a state manager like Redux wich can cause performance issues with too many rerenders.
+
+# Alternative Architecture 2
+
+I could have use Zustand instead of Redux, Zustand is another state manager.
+
+## Avantages
+
+Less boilerPlate than Redux and Redux-toolkit, no need to wrap a Component with a Provider.
+
+## Drawbacks
+
+Zustand is less popular than Redux.
+
 # Workflow
 
 ## TDD (Test Driven Development)
@@ -35,7 +71,11 @@ Because "separation of concern" is a key software principle and thanks to it we 
 
 To help me write my test i used plain old jest in the core of my application and react testing library to help me replicate the rendering of my component in the virtual DOM and his behavior, i also used jest to write my assertions.
 
-i choose react-testing-library for my react component because it enable us to test our application the way the user experience it and not the actual implementation.
+i choose react-testing-library for my react component because it enable us to test our application the way the user experience it and not the actual implementation.At the end of this project i introduce myself to cypress an End to End testing library to further improve the quality of my delivery.
+
+## My testing pyramid
+
+![](public/img/testing-pyramid.PNG)
 
 ### Mocking
 
@@ -56,6 +96,131 @@ Traditionally TDD is not often used in frontend development so why i used tdd in
 5. TDD helps me in the design of my application, in reality the tests are just a side effects of TDD, the real value is in the guidance of writing my intention before wrinting any production code and the countinuous feedback.
 
 I surely forgot to mention some advantages of this workflow and there are surely other advantages that i'm not even aware of.
+
+# Styling
+
+For the style of my application i used SASS with Scss modules because i love css and i don't feel the need for any css framework.
+seperate the the styling files from the components imporve the lisibilty of the code and don't hover saturated the markup.
+
+i named my classes with the BEM (block\_\_elment--modifier) notation.
+
+## Responsiveness
+
+I used a mobile-first approach to build this app. With the help of flebox and grid the app is responsive by nature almost without using any media queries. i used media queries only for the layout of the modal and to have a font-size coherant with mobile, tablet and laptop devices.
+
+# Goal of the APP
+
+## Specification
+
+1. Display a list of movies or series.
+
+2. Optional: Enable the user to consult details of a movie or a series.
+
+## Scenarios
+
+### Scenario 1
+
+1. Given that the user open the application.
+
+2. When the movies are not displayed yet.
+
+3. Then the user should see a loading spinner
+
+### Scenario 2
+
+1. Given that the user open the application.
+
+2. When an error occurs.
+
+3. Then the user should see a the appropriate error message.
+
+### Scenario 3
+
+1. Given that the user open the application.
+
+2. When there is no error and the loading time is over.
+
+3. Then the user should see a list of recent movies.
+
+### Scenario 4
+
+1. Given that the user has already opened the application and the movies are displayed sucessfully.
+
+2. When the user clicks on the image of a movie.
+
+3. Then the user should see a modal pop up.
+
+### Scenario 5
+
+1. Given that the user has already opened the modal.
+
+2. When the details of the movie are not already displayed
+
+3. Then the user should see a loading spinner.
+
+### Scenario 6
+
+1. Given that the user has already opened the modal.
+
+2. When an error occurs.
+
+3. Then the user should see the appropriate error message.
+
+### Scenario 7
+
+1. Given that the user has already opened the modal.
+
+2. When there is no error and the loading time is over.
+
+3. Then the user should see the details of the movie that he clicked on.
+
+### Scenario 8
+
+1. Given that the user has already opened the modal and the details of the appropriate movie are displayed.
+
+2. When the user clicks on the close button on the top-right of the modal .
+
+3. Then the modal should be closed.
+
+### Scenario 9
+
+1. Given that the user has already opened the modal and the details of the appropriate movie are displayed.
+
+2. When the user clicks on the overlay of the modal .
+
+3. Then the modal should be closed.
+
+### Scenario 10
+
+1. Given that the user has already opened the modal and the details of the appropriate movie are displayed.
+
+2. When the user clicks on the overlay of the modal .
+
+3. Then the modal should be closed.
+
+### Scenario 11
+
+1. Given that the user has already opened the modal and the details of the appropriate movie are displayed.
+
+2. When the user clicks on the content of the modal .
+
+3. Then the modal should stay open.
+
+### Scenario 12
+
+1. Given that the user has already opened the modal and the details of the appropriate movie are displayed.
+
+2. When hits the Escape key.
+
+3. Then the modal should be closed.
+
+### Scenario 13
+
+1. Given that the user has already opened the modal and the details of the appropriate movie are displayed.
+
+2. When the user hits another key than Escapel .
+
+3. Then the modal should stay open.
 
 # Getting Started with Create React App
 
