@@ -75,7 +75,11 @@ const MovieDetails = ({ id, closeModal }) => {
           className={classes.modal__container}
           onClick={cancelEventBubbling}
         >
-          <button className={classes.modal__close} onClick={closeModal}>
+          <button
+            data-cy="close"
+            className={classes.modal__close}
+            onClick={closeModal}
+          >
             <ion-icon name="close-outline"></ion-icon>
           </button>
           <div className={classes.modal__poster}>

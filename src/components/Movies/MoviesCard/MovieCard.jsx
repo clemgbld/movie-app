@@ -31,6 +31,7 @@ const MovieCard = ({ data }) => {
           src={img}
           alt={title}
           onClick={showModal}
+          data-cy="movie-img"
         />
         <Popularity popularity={popularity} />
       </div>
