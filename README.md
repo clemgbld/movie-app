@@ -222,6 +222,14 @@ I used a mobile-first approach to build this app. With the help of flebox and gr
 
 3. Then the modal should stay open.
 
+### Scenario 14
+
+1. Given that the user has already opened the modal and close that same modal
+
+2. When the user clicks on the same image that he clicked before
+
+3. Then modal should apear with the content details directly (thanks to the caching system).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
