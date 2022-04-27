@@ -4,56 +4,63 @@
 
 ## Core / Domain
 
-In the Core which is the brain of my application i used Redux tool kit to reduce the boiler plate code that is present in the core Redux library, and ES6 vanilla javascript. the different actions and selectors enable us to comunicate with UI thanks to the React-redux provider that wraps our App component.
+In the Core, which is the brain of my application, i used Redux tool kit to reduce the boiler plate code that is present in the core Redux library and ES6 vanilla javascript. The different actions and selectors enable us to communicate with UI thanks to the React-redux provider that wraps our App component.
 
 ## Services/ Infrastructure
 
 I made a class that manage all the api calls and also some data formating.
-Indeed this class communicate with the core of the application and provides it the data when it needs it.
+Indeed, this class communicate with the core of the application and provides it the data when it needs it.
 
 ## FrameWork / Library /UI
 
-I used the last version (18) React js to build the Ui of the application each component are either pure component that displays data received by props or component that display data received by useSelectors and/or dispacth actions received by useDispatch
+I used the last version (18) of React js to build the UI of the application. Each component are either pure component that displays data received by props or component that display data received by useSelectors and/or dispacth actions received by useDispatch
 
 ### Architecture of a component
 
-a component is usually put in a folder name after it and has 3 files Component.test.js (for testing),Component.jsx(the component itself), Component.module.scss(for styling).
+A component is usually put in a folder name after it and has 3 files:
+
+- One for testing: Component.test.js,
+- The component itself Component.jsx,
+- And one for styling : Component.module.scss.
 
 ## Conclusion
 
-Why i setup this architecture ?
+Why did i set up this architecture ?
 
-Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible actually because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case React) wich is really handy in case of a futur migration . that also facilitate the testatbility of our product owing to the fact that all the layers know nothing about each other.
+Because "separation of concern" is a key software principle and thanks to it we can make our application more flexible. Indeed, because we separate the buissness logic from the GUI we are not coupled with the framework/library (in that case React) which is really handy in case of a futur migration. It also facilitate the testatbility of our product owing to the fact that all the layers know nothing about each other.
 
 # Alternative Language choice
 
-I could have use Typescript instead of Javascript, it is the modern way to go with React, i would have use it if the project was bigger.
+I could have use Typescript instead of Javascript, it is the modern way to go with React. I would have use it if the project was bigger.
 
-## Avantages
+## Advantages
 
-Direct feedback from the editor so before the compilation. For exemple if i miss a parametter in a function Typescript will catch the error directly, Javascript doesn't see this type of error. Typescript enable us to have better code completion support thanks to the interfaces and types. The last avantage is the self documentation that Typescript gives to the code base, in fact Typescript with TDD alltogether further improve the quality of the code.
+Direct feedback from the editor when a typing eror occurs, so before the compilation. For example, if i miss a parameter in a function, Typescript will catch the error directly. Javascript doesn't see this type of error. Typescript enables us to have better code completion support thanks to the interfaces and types. The last advantage is the self documentation that Typescript gives to the code base, in fact Typescript with TDD alltogether further improve the quality of the code.
 
 ## Drawbacks
 
-there is only few trades-off with typescript the first one is that you write more code than with vanilla Javascript. The second one is that certain library that are not maintained anymore doesn't enable us to have type support for Typescript but this case is becoming less frequent.
+There is only few trades-off with typescript.
+
+- The first one is that you write more code than with vanilla Javascript.
+- The second one is that certain library that are not maintained anymore doesn't enable us to have type support for Typescript but this case is becoming less frequent.
 
 # Alternative Architecture 1
 
 Instead of using Redux i could have use a custom hook for each reducer with the react hook useReducer.
 
-## Avantages
+## Advantages
 
-The main advantage is that useReducer is already include in React so i wouldn't have installed redux-toolkit and react-redux, and the less you download packages the better it is for performance. I would have written a little bit less code though Redux-toolkit solved the boilerplate problem of the classic redux. Custom hooks with useReducer are also easy to test thanks to react-hooks-testing-library.
+The main advantage is that useReducer is already included in React so i wouldn't have to install redux-toolkit and react-redux, and the less you download packages the better it is for performance. I would have written a little bit less code although Redux-toolkit solved the boilerplate problem of the classic redux. Custom hooks with useReducer are also easy to test thanks to react-hooks-testing-library.
 
 ## Drawbacks
 
-There are two main drawbacks first a strong coupling with React so less fexibilty, secondly useReducer = localState if i wanted to share state between multiple components i would be forced to use the Context APi from React wich is a great option but it's not really a state manager like Redux wich can cause performance issues with too many rerenders.
+There are two main drawbacks. First a strong coupling with React so less fexibilty, secondly useReducer = localState. If i wanted to share state between multiple components, i would be forced to use the Context API from React which is a great option but it's not really a state manager like Redux which can cause performance issues with too many rerenders.
 
 # Alternative Architecture 2
 
 I could have use Zustand instead of Redux, Zustand is another state manager.
 
-## Avantages
+## Advantages
 
 Less boilerPlate than Redux and Redux-toolkit, no need to wrap a Component with a Provider.
 
@@ -69,9 +76,9 @@ Zustand is less popular than Redux.
 
 ## Library used
 
-To help me write my test i used plain old jest in the core of my application and react testing library to help me replicate the rendering of my component in the virtual DOM and his behavior, i also used jest to write my assertions.
+To help me write my test, i used plain old jest in the core of my application and react testing library to help me replicate the rendering of my component in the virtual DOM and his behavior. I also used jest to write my assertions.
 
-i choose react-testing-library for my react component because it enable us to test our application the way the user experience it and not the actual implementation.At the end of this project i introduce myself to cypress an End to End testing library to further improve the quality of my delivery.
+I chose react-testing-library for my react components because it enables us to test our application the way the user experience it and not the details implementation. At the end of this project i introduce myself to cypress an End to End testing library to further improve the quality of my delivery.
 
 ## My testing pyramid
 
@@ -79,34 +86,34 @@ i choose react-testing-library for my react component because it enable us to te
 
 ### Mocking
 
-To mock my API calls i used Mock Service Worker(MSW) because like react-testing-library my test are not glued by the implementation(axios,fetch ect...) since msw mock by intercepting requests on the network level. i used axios for my api calls but i can replaced it with fetch and it will not break my test, that is the biggest advantage of msw.
+To mock my API calls i used Mock Service Worker(MSW) because like react-testing-library my test are not glued by the implementation(axios,fetch ect...) since msw mock by intercepting requests on the network level. I used axios for my API calls but i can replaced it with fetch and it will not break my test, that is the biggest advantage of msw.
 
 ## Why use TDD in frontend development
 
-Traditionally TDD is not often used in frontend development so why i used tdd in this project ?
+Traditionally, TDD is not often used in frontend development so why did i used TDD in this project ?
 
-1. "TDD slow down the development process", it's true in a short term point of view. Nonetheless in a mid and long term the development process is faster with tdd for the reason that i'm becoming faster as i practice it, when i write pure logic i don't need or rarely need to go back and forth between my browser and my IDE and use console.log or the debugger because the tests help me catch bugs, and point me in the right direction like a GPS.
+1. "TDD slow down the development process", it's true in a short term point of view. Nonetheless, in a mid and long term the development process is faster with TDD for the reason that i'm becoming faster as i practice it. When i write pure logic, i rarely need to go back and forth between my browser and my IDE and use console.log or the debugger because the tests help me catch bugs, and point me in the right direction like a GPS.
 
 2. I don't need to test manually my application all the time.
 
-3. My code is much more shorter and elegant thanks to the continious refactoring.
+3. My code is shorter and elegant thanks to the continious refactoring.
 
 4. I trust more my code, i'm not afraid to break something when i add a new feature to my project or when i refactor a function that already exists.
 
-5. TDD helps me in the design of my application, in reality the tests are just a side effects of TDD, the real value is in the guidance of writing my intention before wrinting any production code and the countinuous feedback.
+5. TDD helps me in the design of my application. In reality, the tests are just a side effects of TDD, the real value is in the guidance of writing my intention before writing any production code and the countinuous feedback.
 
-I surely forgot to mention some advantages of this workflow and there are surely other advantages that i'm not even aware of.
+I surely forgot to mention some advantages of this workflow because there are lots of other advantages that i'm not even aware of.
 
 # Styling
 
-For the style of my application i used SASS with Scss modules because i love css and i don't feel the need for any css framework.
-seperate the the styling files from the components imporve the lisibilty of the code and don't hover saturated the markup.
+For the style of my application i used SASS with Scss modules because it's a pleasure to use css and i don't feel the need for any css framework.
+Seperate the styling files from the components, improve the lisibilty of the code and don't over saturate the markup.
 
-i named my classes with the BEM (block\_\_elment--modifier) notation.
+I named my classes with the BEM (block\_\_elment--modifier) notation.
 
 ## Responsiveness
 
-I used a mobile-first approach to build this app. With the help of flebox and grid the app is responsive by nature almost without using any media queries. i used media queries only for the layout of the modal and to have a font-size coherant with mobile, tablet and laptop devices.
+I used a mobile-first approach to build this app. With the help of flebox and grid the app is responsive by nature almost without using any media queries. I used media queries only for the layout of the modal and to have a font-size coherant with mobile, tablet and laptop devices.
 
 # Goal of the APP
 
